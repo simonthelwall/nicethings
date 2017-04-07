@@ -70,25 +70,3 @@ nice_pval <- function(x){
   z <- ifelse(x < 0.001, "< 0.001", sprintf("%.3f", x))
   return(z)
 }
-
-#' Formats regression estimates and confidence intervals for nice printing.
-#'
-#' Takes estimates, lower and upper confidence intervals and formats them for printing in markdown
-#' @param estimate An estimate
-#' @param lci A lower confidence interval
-#' @param uci An upper confidence interval
-#' @return A string formatted with "d.dd (dd-dd)"
-#' @examples
-#' nice_estimate(3.546548, 1.215116, 17.60546)
-#' @return
-nice_estimate <- function(estimate, lci, uci){
-  if (!requireNamespace("stringr", quietly = TRUE)) {
-    stop("stringr is needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
-  estimate <- stringr::str_trim(sprintf("%7.2f", estimate))
-  lci <- stringr::str_trim(sprintf("%7.2f", lci))
-  uci <- stringr::str_trim(sprintf("%7.2f", uci))
-  z <- paste0(estimate, " (", lci, "-", uci, ")" )
-  return(z)
-}
