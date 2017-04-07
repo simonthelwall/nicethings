@@ -9,6 +9,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+library(nicethings)
+```
+
 Using values calculated in R for printing can be long-winded. 
 Often to get values into a format that is nice to read involves multiple nested functions. 
 This makes inline code difficult to write and difficult to read. 
@@ -29,14 +33,20 @@ m1_tidy
 Say we want to print the estimate for the effect of weight on the mpg, with the 95% confidence intervals. 
 Without `nice_estimate()` the code might look something like this:
 
-> Vehicle weight was significantly associated with decreased fuel efficiency `r nice_inline_r(paste0(round(m1_tidy[3,2], 1), " (95% CI:", round(m1_tidy[3,6], 1), "-", round(m1_tidy[3,7], 1), ")"))`
+> Vehicle weight was significantly associated with decreased fuel efficiency `r nice_inline_r("paste0(round(m1_tidy[3,2], 1), \" (95% CI:\", round(m1_tidy[3,6], 1), \"-\", round(m1_tidy[3,7], 1), \")\")")`
 
 which would render as: 
-Vehicle weight was significantly associated with decreased fuel efficiency `r paste0(round(m1_tidy[3,2], 1), " (95% CI:", round(m1_tidy[3,6], 1), "-", round(m1_tidy[3,7], 1), ")")`. 
 
-This is true of various things in R: percentages, p-values, for examples. 
+> Vehicle weight was significantly associated with decreased fuel efficiency `r paste0(round(m1_tidy[3,2], 1), " (95% CI:", round(m1_tidy[3,6], 1), "-", round(m1_tidy[3,7], 1), ")")`. 
+
+This is true of various things in R: percentages, p-values, for example.
+
+## The solution
+
 A nicer approach is to wrap these up into a function and do something like: 
-> Vehicle weight was significantly associated with decreased fuel efficiency `r nice_inline_r(nice_estimate(m1_tidy[3,2], m1_tidy[3,6], m1_tidy[3,7]))`
+
+> Vehicle weight was significantly associated with decreased fuel efficiency `r nice_inline_r("nice_estimate(m1_tidy[3,2], m1_tidy[3,6], m1_tidy[3,7])")`
 
 which would render as:
-Vehicle weight was significantly associated with decreased fuel efficiency `r nice_estimate(m1_tidy[3,2], m1_tidy[3,6], m1_tidy[3,7])`
+
+> Vehicle weight was significantly associated with decreased fuel efficiency `r nice_estimate(m1_tidy[3,2], m1_tidy[3,6], m1_tidy[3,7])`

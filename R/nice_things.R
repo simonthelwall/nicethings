@@ -80,7 +80,7 @@ nice_pval <- function(x){
 #' @param x A string of R code for printing as code, inline
 #' @return A formatted string
 #' @examples
-#' nice_inline_r(round(3.77155454, 3))
+#' nice_inline_r("round(3.77155454, 3)")
 #' @export
 nice_inline_r <- function(x){
   sprintf('``` `r %s` ```', x)
