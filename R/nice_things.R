@@ -70,3 +70,18 @@ nice_pval <- function(x){
   z <- ifelse(x < 0.001, "< 0.001", sprintf("%.3f", x))
   return(z)
 }
+
+#' Allows user to write examples of inline R code.
+#'
+#' Yihui gets the credit for this one.
+#' \url{http://stackoverflow.com/questions/20409172/how-to-display-verbatim-inline-r-code-with-backticks-using-rmarkdown}
+#' Writing text to give examples of inline r code is tricky.
+#' This function should achieve that.
+#' @param x A string of R code for printing as code, inline
+#' @return A formatted string
+#' @examples
+#' nice_inline_r(round(3.77155454, 3))
+#' @export
+nice_inline_r <- function(x){
+  sprintf('``` `r %s` ```', x)
+}
