@@ -85,3 +85,17 @@ nice_pval <- function(x){
 nice_inline_r <- function(x){
   sprintf('``` `r %s` ```', x)
 }
+
+#' Formats dates to gov.uk requirements
+#'
+#' gov.uk dates are supposed to be formatted DD Month YYYY
+#' This function takes a date and reformats it accordingly
+#' @param x A date object
+#' @return A string
+#' @examples
+#' nice_govuk_date(Sys.Date())
+#' @export
+
+nice_govuk_date <- function(x){
+  format(x, "%d %B %Y")
+}
