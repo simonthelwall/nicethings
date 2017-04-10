@@ -26,7 +26,7 @@ Consider a regression model, from which we want to print the output into a parag
 library(broom)
 data("mtcars")
 m1 <- lm(mpg ~ cyl + wt, data = mtcars)
-m1_tidy <- tidy(m1, conf.int = TRUE)
+m1_tidy <- broom::tidy(m1, conf.int = TRUE)
 m1_tidy
 ```
 
