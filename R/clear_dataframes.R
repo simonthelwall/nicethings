@@ -10,5 +10,6 @@
 #' @export
 
 clear_dataframes <- function(){
-  rm(list = names(which(unlist(eapply(.GlobalEnv,is.data.frame)))))
+  rm(list = names(which(unlist(eapply(.GlobalEnv, is.data.frame)))),
+     envir = .GlobalEnv)
 }
