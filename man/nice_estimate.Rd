@@ -18,6 +18,7 @@ A string in format d.d (95\% CI: d.d-d.d)
 }
 \description{
 Rounds estimates to 1 decimal place and copies similarly formatted confidence intervals inside brackets.
+If you want a \strong{really} good inline output from a regression model, see Benjamin Nutter's \code{\link[pixiedust]{dust_inline}} from his package \href{https://github.com/nutterb/pixiedust}{pixiedust}
 }
 \examples{
 nice_estimate(100.111, 90.0, 110.000002)

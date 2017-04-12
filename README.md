@@ -1,4 +1,5 @@
-[![Travis-CI Build Status](https://travis-ci.org/simonthelwall/nicethings.svg?branch=master)](https://travis-ci.org/)
+[![Travis-CI Build Status](https://travis-ci.org/simonthelwall/nicethings.svg?branch=master)](https://travis-ci.org/) [![codecov](https://codecov.io/gh/simonthelwall/nicethings/branch/master/graph/badge.svg)](https://codecov.io/gh/simonthelwall/nicethings)
+
 # nicethings
 
 This collects together various functions that I find useful. 

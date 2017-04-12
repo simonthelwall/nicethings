@@ -11,4 +11,5 @@ LazyData: true
 Imports: stringr, rmarkdown, knitr
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
-Suggests: broom
+Suggests: broom,
+    testthat
