@@ -1,7 +1,8 @@
 context("nice_names")
 
 dat <- data.frame(var.1 = 1, VAR2 = 2, `var 3` = 3, var_4_ = 4,
-                  var_5__ = 5, `var6 ` = 6, `var-7` = 7, check.names = FALSE)
+                  var_5__ = 5, `var6 ` = 6, `var-7` = 7, `var,8` = 8,
+                  check.names = FALSE)
 
 test_that("nice names removes what it should", {
   names(dat) <- nice_names(dat)
@@ -12,4 +13,5 @@ test_that("nice names removes what it should", {
   expect_false(grepl("\\_\\_", names(dat)[5]))
   expect_false(grepl(" ", names(dat)[6]))
   expect_false(grepl("-", names(dat)[7]))
+  expect_false(grepl(",", names(dat)[8]))
 })
