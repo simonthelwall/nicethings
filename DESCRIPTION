@@ -8,7 +8,8 @@ Description: Printing R output inline to markdown documents can be long winded a
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: stringr, rmarkdown, knitr
+Imports: stringr, rmarkdown, knitr,
+    assertthat
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
 Suggests: broom,
