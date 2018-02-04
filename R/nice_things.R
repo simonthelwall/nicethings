@@ -81,5 +81,24 @@ nice_inline_r <- function(x){
 #' @export
 
 nice_govuk_date <- function(x){
+  assertthat::assert_that(assertthat::is.date(x))
   format(x, "%d %B %Y")
+}
+
+#' Easily calculate a percentage change
+#'
+#' Intended for inline printing, allows easy calculation of percentage changes
+#'
+#' @param start The value at the start
+#' @param end The value at the end
+#' @return A percentage change from start to end
+#' @examples
+#' nice_pc_change(5, 10)
+#' @export
+
+nice_pc_change <- function(start, end){
+  assertthat::assert_that(is.numeric(start))
+  assertthat::assert_that(is.numeric(end))
+  z <- ((end - start) / end) * 100
+  return(z)
 }

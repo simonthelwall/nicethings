@@ -35,4 +35,12 @@ test_that("nice_inline_r returns expected value", {
 test_that("nice_gov_uk returns expected value", {
   expect_equal(nice_govuk_date(as.Date("01-01-1979", "%d-%m-%Y")),
                "01 January 1979")
+  expect_error(nice_govuk_date("01-01-1979"))
+})
+
+# nice_pc_change
+test_that("nice_pc_change returns expected value", {
+  expect_equal(nice_pc_change(start = 5, end = 10), 50)
+  expect_error(nice_pc_change(start = "5", end = 10))
+  expect_error(nice_pc_change(start = 5, end = "10"))
 })
