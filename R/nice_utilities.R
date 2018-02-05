@@ -1,4 +1,4 @@
-#' Format variable names into standard format.
+#' Format column names into standard format.
 #'
 #' Turns column names of data frames into standardised format.
 #' Dots are replaced with underscores, trailing underscores are removed and everything is made lower case.
@@ -19,6 +19,44 @@ nice_names <- function(x){
   names(x) <- gsub("-", "\\_", names(x)) # remove hyphens
   names(x) <- gsub(" ", "\\_", names(x)) # remove spaces
   names(x) <- gsub("\\_{2,}", "\\_", names(x)) # where multiple underscores occur, are replaced by one.
+}
+
+#' Format variable names into standard format in a pipe.
+#'
+#' Turns column names of data frames into standardised format.
+#' Dots are replaced with underscores, trailing underscores are removed and everything is made lower case.
+#' Punctuation and spaces are also replaced by underscores and double underscores are removed last
+#'
+#' @param x A data frame
+#' @return A data frame with nicely formatted names
+#' @examples
+#' \dontrun{
+#' data(mtcars)
+#' names(mtcars) <- toupper(names(mtcars))
+#' mtcars %>% pipe_nice_names()
+#' }
+#' @export
+
+pipe_nice_names <- function(x){
+  assertthat::assert_that(is.data.frame(x))
+  x <- dplyr::rename_all(x, dplyr::funs(pipeable_nice_names))
+  return(x)
+}
+
+pipeable_nice_names <- function(x){
+  x <- tolower(x)
+  x <- gsub(pattern = "[[:punct:]]", "\\_", x)
+  x <- gsub("\\.", "\\_", x)
+  x <- gsub("\\s", "\\_", x) # get rid of white space
+  x <- gsub("\\_$", "", x) # remove trailing underscores.
+  x <- gsub("-", "\\_", x) # remove hyphens
+  x <- gsub(" ", "\\_", x) # remove spaces
+  x <- gsub("\\/", "\\_", x) # remove forward slashes
+  x <- gsub("\\&", "\\_", x) # remove ampersands
+  x <- gsub("\\(", "\\_", x) # remove round bracket left
+  x <- gsub("\\)", "\\_", x) # remove round bracket right
+  x <- gsub("\\_{2,}", "\\_", x) # where multiple underscores oc
+  return(x)
 }
 
 #' A function to load a single object from an R data file

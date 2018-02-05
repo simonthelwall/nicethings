@@ -5,14 +5,6 @@ test_that("nice_estimate returns expected values", {
   expect_equal(nice_estimate(0.9, 0.8001, 0.95) , "0.9 (95% CI:0.8-0.9)")
 })
 
-# nice_names
-test_that("nice_names returns expected values", {
-  dat <- data.frame(v.1 = 1, `V-2` = 1, `v 3` = 1, check.names = FALSE)
-  expect_equal(nice_names(dat)[1], "v_1")
-  expect_equal(nice_names(dat)[2], "v_2")
-  expect_equal(nice_names(dat)[3], "v_3")
-})
-
 # nice_perc
 test_that("nice_perc returns expected values", {
   expect_equal(nice_perc(5,10), "50.0")
