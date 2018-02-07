@@ -7,7 +7,7 @@
 nice_load(file, object, rename = NULL)
 }
 \arguments{
-\item{file}{An RData file}
+\item{file}{An .RData file}
 
 \item{object}{An object known to be saved within the RData file}
 
@@ -18,6 +18,7 @@ nice_load(file, object, rename = NULL)
 However, one may wish to load only a single object, if, for example, one has conflicting object names in the same environment.
 This function also allows the user to rename an object within the data frame.
 Unfortunately, it is not possible to selectively load objects so this function loads every thing in the data file, and then drops what is not required.
+Cribbed from https://stackoverflow.com/questions/8700619/get-specific-object-from-rdata-file
 }
 \examples{
 x <- 1
@@ -25,4 +26,5 @@ y <- 2
 save(x,y, file = paste0(tempdir(), "/temp.RData"))
 rm(x, y)
 nice_load(file = paste0(tempdir(), "/temp.RData"), "y")
+nice_load(file = paste0(tempdir(), "/temp.RData"), "y", rename = "z")
 }
