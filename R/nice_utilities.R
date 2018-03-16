@@ -57,7 +57,10 @@ pipeable_nice_names <- function(x){
   x <- gsub("\\)", "\\_", x) # remove round bracket right
   x <- gsub("\\u2018", "\\_", x) # remove weird quote left
   x <- gsub("\\u2019", "\\_", x) # remove weird quote right
-  x <- gsub("\\_{2,}", "\\_", x) # where multiple underscores oc
+  # I have no idea why the following line requires a single backslash, where as the above lines cope with double
+  x <- gsub("\u00ef", "\\_", x) # remove LATIN SMALL LETTER I WITH DIAERESIS
+  x <- gsub("\\_{2,}", "\\_", x) # where multiple underscores occur
+  x <- gsub("^\\_+", "", x) # remove any leading underscores
   return(x)
 }
 
