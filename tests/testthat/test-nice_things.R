@@ -36,3 +36,9 @@ test_that("nice_pc_change returns expected value", {
   expect_error(nice_pc_change(start = "5", end = 10))
   expect_error(nice_pc_change(start = 5, end = "10"))
 })
+
+# nice_rversionstring
+test_that("nice_rversionstring returns expected value", {
+  expect_true(is.character(nice_rversionstring()))
+  expect_equal(substr(nice_rversionstring(), 1, 10), "R version ")
+})

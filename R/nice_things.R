@@ -102,3 +102,16 @@ nice_pc_change <- function(start, end){
   z <- ((end - start) / end) * 100
   return(z)
 }
+
+#' nice_rversion_string
+#'
+#' Print a nice R version string without the date at the end
+#'
+#' @return A character string giving the R version
+#' @example nice_rversionstring()
+#' @export
+
+nice_rversionstring <- function(){
+  z <- sub("\\s\\(.+", "", R.version.string)
+  return(z)
+}

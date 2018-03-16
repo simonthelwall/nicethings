@@ -55,6 +55,8 @@ pipeable_nice_names <- function(x){
   x <- gsub("\\&", "\\_", x) # remove ampersands
   x <- gsub("\\(", "\\_", x) # remove round bracket left
   x <- gsub("\\)", "\\_", x) # remove round bracket right
+  x <- gsub("\\u2018", "\\_", x) # remove weird quote left
+  x <- gsub("\\u2019", "\\_", x) # remove weird quote right
   x <- gsub("\\_{2,}", "\\_", x) # where multiple underscores oc
   return(x)
 }
