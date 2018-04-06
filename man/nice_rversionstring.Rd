@@ -2,7 +2,7 @@
 % Please edit documentation in R/nice_things.R
 \name{nice_rversionstring}
 \alias{nice_rversionstring}
-\title{nice_rversion_string}
+\title{nice_rversionstring}
 \usage{
 nice_rversionstring()
 }
