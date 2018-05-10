@@ -121,3 +121,60 @@ nice_load <- function(file, object, rename = NULL){
     assign(eval(object), get(object), envir = .GlobalEnv)
   }
 }
+
+#' Formats estimates and 95\% confidence intervals for nice printing.
+#'
+#' Rounds estimates to 1 decimal place and copies similarly formatted confidence intervals inside brackets.
+#' @param estimate An estimate such as a rate ratio
+#' @param lci The lower confidence interval
+#' @param uci The upper confidence interval
+#' @return A string in format d.d (95\% CI: d.d-d.d)
+#' @examples
+#' nice_estimate(100.111, 90.0, 110.000002)
+#' nice_estimate(0.9, 0.8001, 0.95)
+#' @export
+
+nice_estimate <- function(estimate, lci, uci){
+  if (!requireNamespace("stringr", quietly = TRUE)) {
+    stop("stringr is needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
+  estimate <- stringr::str_trim(sprintf("%7.1f", estimate))
+  lci <- stringr::str_trim(sprintf("%7.1f", lci))
+  uci <- stringr::str_trim(sprintf("%7.1f", uci))
+  z <- paste0(estimate, " (95% CI:", lci, "-", uci, ")" )
+  return(z)
+}
+
+#' Nicely print the most recent year
+#'
+#' @param x A year variable
+#' @param year_format The current format of x, one of "fyear6", "fyear4", "cyear2"
+#' @return A string formatted year
+#' @examples
+#' x <- 201516
+#' nice_year(x, "fyear6")
+#' nice_year(97, "cyear2")
+#' nice_year(12, "cyear2")
+#' nice_year(0708, "fyear4") # this fails - is it supposed to?
+#' nice_year("07/08", "fyear4")
+#' @export
+
+nice_year <- function(x, year_format){
+  x <- gsub("[:alpha:] | [:punct:] | [:space:]" , "", x)
+  x <-gsub("/", "", x)
+  year_format_list <- c("fyear6", "fyear4", "cyear2")
+  stopifnot(year_format %in% year_format_list)
+  z <- ifelse(year_format == "fyear6",
+              paste0(substr(x, 1,4), "/", substr(x, 5, 6)),
+              ifelse(year_format == "fyear4",
+                     ifelse(substr(x, 1, 2) < 90,
+                            paste0(20, substr(x, 1,2), "/", substr(x, 3, 4)),
+                            paste0(19, substr(x, 1,2), "/", substr(x, 3, 4))),
+                     ifelse(year_format == "cyear2",
+                            ifelse(x > 90, paste0("19", x), paste0("20", x)),
+                            NA)
+              )
+  )
+  return(z)
+}
