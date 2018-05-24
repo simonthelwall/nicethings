@@ -108,7 +108,7 @@ nice_pc_change <- function(start, end){
 #' Print a nice R version string without the date at the end
 #'
 #' @return A character string giving the R version
-#' @example nice_rversionstring()
+#' @examples nice_rversionstring()
 #' @export
 
 nice_rversionstring <- function(){
