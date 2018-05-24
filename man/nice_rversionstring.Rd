@@ -12,3 +12,6 @@ A character string giving the R version
 \description{
 Print a nice R version string without the date at the end
 }
+\examples{
+nice_rversionstring()
+}
