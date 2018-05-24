@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Formats dates to gov.uk requirements — nice_govuk_date • nicethings</title>
+<title>Clear the console — clear_console • nicethings</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,10 +28,10 @@
 
 
 
-<meta property="og:title" content="Formats dates to gov.uk requirements — nice_govuk_date" />
+<meta property="og:title" content="Clear the console — clear_console" />
 
-<meta property="og:description" content="gov.uk dates are supposed to be formatted DD Month YYYY
-This function takes a date and reformats it accordingly" />
+<meta property="og:description" content="Clears the console so that you can start the next step of coding with a fresh screen.
+Has no arguments." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -93,44 +93,77 @@ This function takes a date and reformats it accordingly" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Formats dates to gov.uk requirements</h1>
+    <h1>Clear the console</h1>
     
-    <div class="hidden name"><code>nice_govuk_date.Rd</code></div>
+    <div class="hidden name"><code>clear_console.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>gov.uk dates are supposed to be formatted DD Month YYYY
-This function takes a date and reformats it accordingly</p>
+    <p>Clears the console so that you can start the next step of coding with a fresh screen.
+Has no arguments.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nice_govuk_date</span>(<span class='no'>x</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A date object</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A string</p>
-    
+    <pre class="usage"><span class='fu'>clear_console</span>()</pre>
+        
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nice_govuk_date</span>(<span class='fu'>Sys.Date</span>())</div><div class='output co'>#&gt; [1] "24 May 2018"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>cat</span>(<span class='fu'>rep</span>(<span class='st'>"This is a line. \n"</span>, <span class='fl'>50</span>)) <span class='co'># print some text to clear</span></div><div class='output co'>#&gt; This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. 
+#&gt;  This is a line. </div><div class='input'><span class='fu'>clear_console</span>()</div><div class='output co'>#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Formats dates to gov.uk requirements — nice_govuk_date • nicethings</title>
+<title>Nicely print the most recent year — nice_year • nicethings</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,10 +28,9 @@
 
 
 
-<meta property="og:title" content="Formats dates to gov.uk requirements — nice_govuk_date" />
+<meta property="og:title" content="Nicely print the most recent year — nice_year" />
 
-<meta property="og:description" content="gov.uk dates are supposed to be formatted DD Month YYYY
-This function takes a date and reformats it accordingly" />
+<meta property="og:description" content="Nicely print the most recent year" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -93,36 +92,40 @@ This function takes a date and reformats it accordingly" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Formats dates to gov.uk requirements</h1>
+    <h1>Nicely print the most recent year</h1>
     
-    <div class="hidden name"><code>nice_govuk_date.Rd</code></div>
+    <div class="hidden name"><code>nice_year.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>gov.uk dates are supposed to be formatted DD Month YYYY
-This function takes a date and reformats it accordingly</p>
+    <p>Nicely print the most recent year</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nice_govuk_date</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>nice_year</span>(<span class='no'>x</span>, <span class='no'>year_format</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A date object</p></td>
+      <td><p>A year variable</p></td>
+    </tr>
+    <tr>
+      <th>year_format</th>
+      <td><p>The current format of x, one of "fyear6", "fyear4", "cyear2"</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A string</p>
+    <p>A string formatted year</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nice_govuk_date</span>(<span class='fu'>Sys.Date</span>())</div><div class='output co'>#&gt; [1] "24 May 2018"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fl'>201516</span>
+<span class='fu'>nice_year</span>(<span class='no'>x</span>, <span class='st'>"fyear6"</span>)</div><div class='output co'>#&gt; [1] "2015/16"</div><div class='input'><span class='fu'>nice_year</span>(<span class='fl'>97</span>, <span class='st'>"cyear2"</span>)</div><div class='output co'>#&gt; [1] "1997"</div><div class='input'><span class='fu'>nice_year</span>(<span class='fl'>12</span>, <span class='st'>"cyear2"</span>)</div><div class='output co'>#&gt; [1] "2012"</div><div class='input'><span class='fu'>nice_year</span>(<span class='fl'>0708</span>, <span class='st'>"fyear4"</span>) <span class='co'># this fails - is it supposed to?</span></div><div class='output co'>#&gt; [1] "2070/8"</div><div class='input'><span class='fu'>nice_year</span>(<span class='st'>"07/08"</span>, <span class='st'>"fyear4"</span>)</div><div class='output co'>#&gt; [1] "2007/08"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
