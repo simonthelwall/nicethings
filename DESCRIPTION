@@ -2,10 +2,16 @@ Package: nicethings
 Type: Package
 Title: Nicely formats things for printing inline in Rmarkdown documents and other nice things
 Version: 0.0.0.9000
-Author: Simon Thelwall
-Maintainer: Simon Thelwall <yourself@somewhere.net>
+Authors@R: c(
+    person("Simon", "Thelwall", , "simon.thelwall@phe.gov.uk", role = c("aut", "cre"), 
+      comment = c(ORCID = "0000-0002-0434-2724")
+    )
+    )
+Maintainer: Simon Thelwall <simon.thelwall@gmail.com>
 Description: Printing R output inline to markdown documents can be long winded and use many nested functions. This makes it hard to write the code and hard to read it later on.  This package aims to simplify that by nicely wrapping up these nested functions to make writing inline code nicer. It may also do other nice things that I find useful. 
 License: GPL-3
+BugReports: https://github.com/simonthelwall/nicethings/issues
+URL: https://github.com/simonthelwall/nicethings
 Encoding: UTF-8
 LazyData: true
 Imports: stringr, rmarkdown, knitr,

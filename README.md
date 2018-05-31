@@ -13,6 +13,15 @@ I dithered around calling this `stmisc` or `nicethings` and settled with `niceth
 * R
 * stringr
 
+## installation from github
+
+```
+# if you don't already have devtools installed
+install.packages("devtools")
+# install from github
+devtools::install_git("https://github.com/simonthelwall/nicethings.git")
+```
+
 ## Installation from package file
 
 Please email me for the zip file of the package. 
@@ -35,4 +44,4 @@ If installation is successful you will then be able to load the package with `li
 
 # Contributing
 I'd love to receive your suggestions for features.
-Please see the Contribution guide for more information.
+Please see the [Contribution guide](https://github.com/simonthelwall/nicethings/blob/master/CONTRIBUTING.md) for more information.

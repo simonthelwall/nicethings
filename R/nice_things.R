@@ -103,15 +103,33 @@ nice_pc_change <- function(start, end){
   return(z)
 }
 
-#' nice_rversion_string
+#' nice_rversionstring
 #'
 #' Print a nice R version string without the date at the end
 #'
 #' @return A character string giving the R version
-#' @example nice_rversionstring()
+#' @examples nice_rversionstring()
 #' @export
 
 nice_rversionstring <- function(){
   z <- sub("\\s\\(.+", "", R.version.string)
   return(z)
 }
+
+#' yaml_today
+#'
+#' A truly lazy way to insert today's date into an Rmarkdown document.
+#' To use, write date: nicethings::yaml_today() in the YAML header of an
+#' Rmarkdown document.
+#' Pinched from https://stackoverflow.com/a/25389694
+#' @examples
+#' \dontrun{
+#'  # An example yaml header would go
+#'  date: '`r nicethings::yaml_today()`'
+#' }
+#' @export
+
+yaml_today <- function(){
+  return(format(Sys.Date(), "%d %B %Y"))
+}
+

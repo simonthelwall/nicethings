@@ -2,7 +2,7 @@
 % Please edit documentation in R/nice_things.R
 \name{nice_rversionstring}
 \alias{nice_rversionstring}
-\title{nice_rversion_string}
+\title{nice_rversionstring}
 \usage{
 nice_rversionstring()
 }
@@ -11,4 +11,7 @@ A character string giving the R version
 }
 \description{
 Print a nice R version string without the date at the end
+}
+\examples{
+nice_rversionstring()
 }
