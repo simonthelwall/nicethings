@@ -10,10 +10,11 @@ I dithered around calling this `stmisc` or `nicethings` and settled with `niceth
 # Installation and requirements
 ## Requirements
 
-* R
-* stringr
+ * stringr
+ * assertthat
+ * dplyr
 
-## installation from github
+## Installation from github
 
 ```
 # if you don't already have devtools installed
