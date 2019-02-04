@@ -70,7 +70,7 @@
       <h1>nicethings</h1>
                         <h4 class="author">Simon Thelwall</h4>
             
-            <h4 class="date">2018-06-01</h4>
+            <h4 class="date">2018-06-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/simonthelwall/nicethings/blob/master/vignettes/nicethings.Rmd"><code>vignettes/nicethings.Rmd</code></a></small>
       <div class="hidden name"><code>nicethings.Rmd</code></div>
@@ -85,9 +85,8 @@
 <h2 class="hasAnchor">
 <a href="#the-problem" class="anchor"></a>The problem</h2>
 <p>Consider a regression model, from which we want to print the output into a paragraph.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(broom)</code></pre></div>
-<pre><code>## Warning: package 'broom' was built under R version 3.4.4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">"mtcars"</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(broom)
+<span class="kw">data</span>(<span class="st">"mtcars"</span>)
 m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>cyl <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> mtcars)
 m1_tidy &lt;-<span class="st"> </span>broom<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/broom/topics/tidy">tidy</a></span>(m1, <span class="dt">conf.int =</span> <span class="ot">TRUE</span>)
 m1_tidy</code></pre></div>
