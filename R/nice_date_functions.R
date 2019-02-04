@@ -124,8 +124,14 @@ nice_month_string <- function(x, abbreviated_out = FALSE, year_type = "calendar"
 nice_year <- function(x, year_format){
   x <- gsub("[:alpha:] | [:punct:] | [:space:]" , "", x)
   x <-gsub("/", "", x)
+
   year_format_list <- c("fyear6", "fyear4", "cyear2")
   stopifnot(year_format %in% year_format_list)
+
+  if(length(x > 1 & length(year_format) == 1)){
+    year_format <- rep(year_format, length(x))
+  }
+
   z <- ifelse(year_format == "fyear6",
               paste0(substr(x, 1,4), "/", substr(x, 5, 6)),
               ifelse(year_format == "fyear4",

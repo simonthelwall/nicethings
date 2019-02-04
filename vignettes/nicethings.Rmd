@@ -1,7 +1,7 @@
 ---
 title: "nicethings"
 author: "Simon Thelwall"
-date: "`r Sys.Date()`"
+date: "`r nicethings::yaml_today()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{nicethings}
@@ -9,16 +9,22 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r}
-library(nicethings)
-```
+# nicethings
+
+This package draws together a bunch of functions I've written to facilitate nicely formatting values calculated in R for use in Rmarkdown reports.
 
 Using values calculated in R for printing can be long-winded. 
 Often to get values into a format that is nice to read involves multiple nested functions. 
 This makes inline code difficult to write and difficult to read. 
 `nicethings` aims to solve this by providing simple wrappers for common tasks. 
 
-## The problem
+```{r, echo=FALSE}
+library(nicethings)
+```
+
+## Regression output
+
+### The problem
 
 Consider a regression model, from which we want to print the output into a paragraph. 
 
@@ -31,7 +37,7 @@ m1_tidy
 ```
 
 Say we want to print the estimate for the effect of weight on the mpg, with the 95% confidence intervals. 
-Without `nice_estimate()` the code might look something like this:
+To do this using base R the code might look something like this:
 
 > Vehicle weight was significantly associated with decreased fuel efficiency `r nice_inline_r("paste0(round(m1_tidy[3,2], 1), \" (95% CI:\", round(m1_tidy[3,6], 1), \"-\", round(m1_tidy[3,7], 1), \")\")")`
 
@@ -41,7 +47,7 @@ which would render as:
 
 This is true of various things in R: percentages, p-values, for example.
 
-## The solution
+### A solution
 
 A nicer approach is to wrap these up into a function and do something like: 
 

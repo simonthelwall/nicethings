@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>nice_rversionstring — nice_rversionstring • nicethings</title>
+<title>nice_month_factor — nice_month_string • nicethings</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,11 @@
 
 
 
-<meta property="og:title" content="nice_rversionstring — nice_rversionstring" />
+<meta property="og:title" content="nice_month_factor — nice_month_string" />
 
-<meta property="og:description" content="Print a nice R version string without the date at the end" />
+<meta property="og:description" content="One of the problems with the Gregorian calendar is that months are not alphabetical.
+In R the default sorting of strings is in alphabetical order.
+For tables and graphs of data by month this may mean repeated creation of month variables, which is tedious." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,30 +99,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>nice_rversionstring</h1>
-    <small class="dont-index">Source: <a href='https://github.com/simonthelwall/nicethings/blob/master/R/nice_things.R'><code>R/nice_things.R</code></a></small>
-    <div class="hidden name"><code>nice_rversionstring.Rd</code></div>
+    <h1>nice_month_factor</h1>
+    <small class="dont-index">Source: <a href='https://github.com/simonthelwall/nicethings/blob/master/R/nice_date_functions.R'><code>R/nice_date_functions.R</code></a></small>
+    <div class="hidden name"><code>nice_month_string.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Print a nice R version string without the date at the end</p>
+    <p>One of the problems with the Gregorian calendar is that months are not alphabetical.
+In R the default sorting of strings is in alphabetical order.
+For tables and graphs of data by month this may mean repeated creation of month variables, which is tedious.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nice_rversionstring</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>nice_month_string</span>(<span class='no'>x</span>, <span class='kw'>abbreviated_out</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>year_type</span> <span class='kw'>=</span> <span class='st'>"calendar"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A month string, will take either abbreviated or full length month strings</p></td>
+    </tr>
+    <tr>
+      <th>abbreviated_out</th>
+      <td><p>Should the output be abbreviated? default = FALSE</p></td>
+    </tr>
+    <tr>
+      <th>year_type</th>
+      <td><p>string, either calendar or financial (year starts April)</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character string giving the R version</p>
+    <p>A factor with months in order as the occur in the year.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nice_rversionstring</span>()</div><div class='output co'>#&gt; [1] "R version 3.4.3"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nice_month_string</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Dec"</span>, <span class='kw'>abbreviated_out</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>year_type</span> <span class='kw'>=</span> <span class='st'>"calendar"</span>)</div><div class='output co'>#&gt; [1] December
+#&gt; 12 Levels: January February March April May June July August ... December</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
       

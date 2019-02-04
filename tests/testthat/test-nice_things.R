@@ -42,3 +42,10 @@ test_that("nice_rversionstring returns expected value", {
   expect_true(is.character(nice_rversionstring()))
   expect_equal(substr(nice_rversionstring(), 1, 10), "R version ")
 })
+
+# up_or_down ####
+test_that("up_or_down returns expected values",{
+  expect_equal(up_or_down(100, 200), "increase")
+  expect_equal(up_or_down(200, 100), "decrease")
+  expect_equal(up_or_down(100, 100), "no change")
+})
