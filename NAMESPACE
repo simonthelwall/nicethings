@@ -3,6 +3,7 @@
 export(ci_diff_means)
 export(clear_console)
 export(clear_dataframes)
+export(clear_vectors)
 export(nice_diff_means)
 export(nice_estimate)
 export(nice_govuk_date)

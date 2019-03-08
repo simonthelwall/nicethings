@@ -1,3 +1,9 @@
+# version 0.0.0.9002
+
+## Changes
+
+ * Added function `clear_vectors` which will remove all vectors from the global environment. 
+
 # version 0.0.0.9001
 
 ## Changes

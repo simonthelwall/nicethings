@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows user to write examples of inline R code. — nice_inline_r • nicethings</title>
+<title>removes vectors from global environment — clear_vectors • nicethings</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,12 +30,10 @@
 
 
 
-<meta property="og:title" content="Allows user to write examples of inline R code. — nice_inline_r" />
+<meta property="og:title" content="removes vectors from global environment — clear_vectors" />
 
-<meta property="og:description" content="Yihui gets the credit for this one.
-http://stackoverflow.com/questions/20409172/how-to-display-verbatim-inline-r-code-with-backticks-using-rmarkdown
-Writing text to give examples of inline r code is tricky.
-This function should achieve that." />
+<meta property="og:description" content="For those times when you want to clear up your global environment and get rid
+of all the vectors." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,46 +106,29 @@ This function should achieve that." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows user to write examples of inline R code.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/simonthelwall/nicethings/blob/master/R/nice_things.R'><code>R/nice_things.R</code></a></small>
-    <div class="hidden name"><code>nice_inline_r.Rd</code></div>
+    <h1>removes vectors from global environment</h1>
+    <small class="dont-index">Source: <a href='https://github.com/simonthelwall/nicethings/blob/master/R/clear_dataframes.R'><code>R/clear_dataframes.R</code></a></small>
+    <div class="hidden name"><code>clear_vectors.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Yihui gets the credit for this one.
-<a href='http://stackoverflow.com/questions/20409172/how-to-display-verbatim-inline-r-code-with-backticks-using-rmarkdown'>http://stackoverflow.com/questions/20409172/how-to-display-verbatim-inline-r-code-with-backticks-using-rmarkdown</a>
-Writing text to give examples of inline r code is tricky.
-This function should achieve that.</p>
+    <p>For those times when you want to clear up your global environment and get rid
+of all the vectors.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nice_inline_r</span>(<span class='no'>x</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A string of R code for printing as code, inline</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A formatted string</p>
-    
+    <pre class="usage"><span class='fu'>clear_vectors</span>()</pre>
+        
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nice_inline_r</span>(<span class='st'>"round(3.77155454, 3)"</span>)</div><div class='output co'>#&gt; [1] "``` `r round(3.77155454, 3)` ```"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>vec</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ls'>ls</a></span>()</div><div class='output co'>#&gt; [1] "vec"</div><div class='input'><span class='fu'>clear_vectors</span>()</div><div class='output co'>#&gt; <span class='error'>Error in which(unlist(eapply(.GlobalEnv, is.vector))): argument to 'which' is not logical</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ls'>ls</a></span>()</div><div class='output co'>#&gt; [1] "vec"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 
