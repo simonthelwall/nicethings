@@ -58,7 +58,7 @@ rate_confint <- function(numerator, denominator){
 rate_difference <- function(numerator1, denominator1, numerator2, denominator2){
   r1 <- numerator1/denominator1
   r2 <- numerator2/denominator2
-  rd <- abs(r1 - r2)
+  rd <- r1 - r2
   se <- sqrt((numerator1 / denominator1^2) +
                (numerator2 / denominator2^2))
   lci <- rd - (1.96*se)

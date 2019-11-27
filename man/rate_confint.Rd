@@ -15,7 +15,7 @@ rate_confint(numerator, denominator)
 A data frame with three columns giving the rate, lower confidence interval and upper confidence interval.
 }
 \description{
-Calculates a 95 percent CI confidence interval for a rate using the Rothman/Greenland method described in \url{http://www.openepi.com/PDFDocs/PersonTime1Doc.pdf}.
+Calculates a 95 percent confidence interval for a rate using the Rothman/Greenland method described in \url{http://www.openepi.com/PDFDocs/PersonTime1Doc.pdf}.
 }
 \examples{
 dat <- data.frame(n = 1, denom = 10)
