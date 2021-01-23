@@ -2,6 +2,12 @@
 
 ## Changes
 
+ * Added function and vignette for detecting multicollinearity in regression models. 
+
+# version 0.0.0.9002
+
+## Changes
+
  * Added function `clear_vectors` which will remove all vectors from the global environment. 
  * Fixed bug in `rate_difference` in which absolute rate difference was returned. Now returns negative rate differences. 
 
