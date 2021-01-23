@@ -1,7 +1,7 @@
 Package: nicethings
 Type: Package
 Title: Nicely formats things for printing inline in Rmarkdown documents and other nice things
-Version: 0.0.0.9000
+Version: 0.0.0.9002
 Authors@R: c(
     person("Simon", "Thelwall", , "simon.thelwall@phe.gov.uk", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-0434-2724")
@@ -17,7 +17,9 @@ LazyData: true
 Imports: stringr, rmarkdown, knitr,
     assertthat,
     dplyr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr
-Suggests: broom,
-    testthat
+Suggests: 
+    broom,
+    testthat,
+    ggplot2

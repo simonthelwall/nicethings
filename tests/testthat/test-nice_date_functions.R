@@ -105,3 +105,9 @@ test_that("nice_year output is of expected length", {
   expect_equal(nice_year(97, "cyear2"), "1997")
   expect_equal(nice_year("02", "cyear2"), "2002")
 })
+
+test_that("nice_year is vectorised", {
+  # fyear6
+  expect_equal(nice_year(c(201516, 201617), "fyear6"),
+               c("2015/16", "2016/17"))
+})

@@ -19,7 +19,7 @@ rate_difference(numerator1, denominator1, numerator2, denominator2)
 A dataframe with columns for rate difference, upper and lower confidence intervals
 }
 \description{
-Calculates a 95% confidence interval for a rate difference.
+Calculates a 95 percent confidence interval for a rate difference.
 Uses Kirkwood and Sterne's formula for a rate difference, p241 of 2nd Ed.
 I think this could be re-written to work better so that it takes a data.frame as an input and compares against a given baseline.
 }

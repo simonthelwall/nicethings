@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Confidence interval for a rate calculation — rate_confint • nicethings</title>
+<title>nowt — nowt • nicethings</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Confidence interval for a rate calculation — rate_confint" />
-<meta property="og:description" content="Calculates a 95 percent confidence interval for a rate using the Rothman/Greenland method described in http://www.openepi.com/PDFDocs/PersonTime1Doc.pdf." />
+<meta property="og:title" content="nowt — nowt" />
+<meta property="og:description" content="Add a final link to a dplyr or ggplot chain to make testing chains nice." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,49 +111,72 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Confidence interval for a rate calculation</h1>
-    <small class="dont-index">Source: <a href='https://github.com/simonthelwall/nicethings/blob/master/R/rate_confint.R'><code>R/rate_confint.R</code></a></small>
-    <div class="hidden name"><code>rate_confint.Rd</code></div>
+    <h1>nowt</h1>
+    <small class="dont-index">Source: <a href='https://github.com/simonthelwall/nicethings/blob/master/R/nowt.R'><code>R/nowt.R</code></a></small>
+    <div class="hidden name"><code>nowt.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculates a 95 percent confidence interval for a rate using the Rothman/Greenland method described in <a href='http://www.openepi.com/PDFDocs/PersonTime1Doc.pdf'>http://www.openepi.com/PDFDocs/PersonTime1Doc.pdf</a>.</p>
+    <p>Add a final link to a dplyr or ggplot chain to make testing chains nice.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rate_confint</span>(<span class='no'>numerator</span>, <span class='no'>denominator</span>)</pre>
+    <pre class="usage"><span class='fu'>nowt</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>numerator</th>
-      <td><p>Count of events</p></td>
-    </tr>
-    <tr>
-      <th>denominator</th>
-      <td><p>Count of person-years</p></td>
+      <th>x</th>
+      <td><p>A dplyr or ggplot2 object</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with three columns giving the rate, lower confidence interval and upper confidence interval.</p>
+    <p>a dplyr result or ggplot object that is the same as it went into the function.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Credit for the function goes to Duncan Garmonsway and Hadley Wickham</p>
+<p>Garmonsway (2019, Jan. 31).
+Duncan Garmonsway: Add nowt() to your tidy pipelines.
+Retrieved from https://nacnudus.github.io/duncangarmonsway/posts/2019-01-31-add-nowt-to-your-tidy-pipelines/</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>denom</span> <span class='kw'>=</span> <span class='fl'>10</span>)
-<span class='fu'>rate_confint</span>(<span class='no'>dat</span>$<span class='no'>n</span>, <span class='no'>dat</span>$<span class='no'>denom</span>)</div><div class='output co'>#&gt;   rate        lci       uci
-#&gt; 1  0.1 0.01408584 0.7099327</div><div class='input'><span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>denom</span> <span class='kw'>=</span> <span class='fl'>25</span>) <span class='co'># replicates output from openepi just fine.</span>
-<span class='fu'>rate_confint</span>(<span class='no'>dat</span>$<span class='no'>n</span>, <span class='no'>dat</span>$<span class='no'>denom</span>)</div><div class='output co'>#&gt;   rate        lci       uci
-#&gt; 1  0.2 0.08324422 0.4805138</div></pre>
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package 'dplyr' was built under R version 3.5.3</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: 'dplyr'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package 'ggplot2' was built under R version 3.5.3</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>mtcars</span>)
+<span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>cyl</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>mpg</span>)) <span class='kw'>%&gt;%</span>
+  <span class='co'># rename(mean_mpg = mean(mpg)) %&gt;%</span>
+  <span class='fu'>nowt</span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 2</span><span>
+#&gt;     cyl `mean(mpg)`
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     4        26.7
+#&gt; </span><span style='color: #555555;'>2</span><span>     6        19.7
+#&gt; </span><span style='color: #555555;'>3</span><span>     8        15.1</div><div class='input'>
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mtcars</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>disp</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>mpg</span>)) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
+  <span class='co'># scale_x_continuous("Displacement") +</span>
+  <span class='fu'>nowt</span>()
+<span class='no'>p</span></div><div class='img'><img src='nowt-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
+    <h2>Author</h2>
+    <p>Duncan Garmonsway</p>
   </div>
 </div>
 
