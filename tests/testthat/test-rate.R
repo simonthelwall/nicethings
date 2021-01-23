@@ -12,9 +12,9 @@ test_that("Incorrect inputs are caught", {
 
 test_that("rate_confint returns expected outputs", {
   expect_true(is.data.frame(rate_confint(5, 25)))
-  expect_equal(rate_confint(5, 25)$rate, 0.2, tolerance = .002)
-  expect_equal(rate_confint(5, 25)$lci, 0.0832, tolerance = .002)
-  expect_equal(rate_confint(5, 25)$uci, 0.4805, tolerance = .002)
+  expect_equal(rate_confint(5, 25)$rate, 0.2, tolerance = .0001)
+  expect_equal(rate_confint(5, 25)$lci, 0.0832, tolerance = .0001)
+  expect_equal(rate_confint(5, 25)$uci, 0.4805, tolerance = .0001)
 })
 
 test_that("Rate difference output returns expected value from Kirkwood and Sterne, p241",{
