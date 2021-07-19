@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>removes data frames from global environment — clear_dataframes • nicethings</title>
+<title>Neil Pearce's multicollinearity — np_multicol • nicethings</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="removes data frames from global environment — clear_dataframes" />
-<meta property="og:description" content="For those occaisions when you want to clear all your data frames out of memory without also removing any functions you may have loaded in.
-Adapted from http://stackoverflow.com/questions/19684819/get-list-of-available-data-frames" />
+<meta property="og:title" content="Neil Pearce's multicollinearity — np_multicol" />
+<meta property="og:description" content="Detect multicollinearity using Neal Pearce's change in root mean square error" />
 
 
 
@@ -127,25 +126,66 @@ Adapted from http://stackoverflow.com/questions/19684819/get-list-of-available-d
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>removes data frames from global environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/simonthelwall/nicethings/blob/master/R/clear_dataframes.R'><code>R/clear_dataframes.R</code></a></small>
-    <div class="hidden name"><code>clear_dataframes.Rd</code></div>
+    <h1>Neil Pearce's multicollinearity</h1>
+    <small class="dont-index">Source: <a href='https://github.com/simonthelwall/nicethings/blob/master/R/np_multicol.R'><code>R/np_multicol.R</code></a></small>
+    <div class="hidden name"><code>np_multicol.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>For those occaisions when you want to clear all your data frames out of memory without also removing any functions you may have loaded in.
-Adapted from <a href='http://stackoverflow.com/questions/19684819/get-list-of-available-data-frames'>http://stackoverflow.com/questions/19684819/get-list-of-available-data-frames</a></p>
+    <p>Detect multicollinearity using Neal Pearce's change in root mean square error</p>
     </div>
 
-    <pre class="usage"><span class='fu'>clear_dataframes</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>np_multicol</span><span class='op'>(</span><span class='va'>model</span>, <span class='va'>main_effect</span>, <span class='va'>covariates</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>model</th>
+      <td><p>A regression model</p></td>
+    </tr>
+    <tr>
+      <th>main_effect</th>
+      <td><p>A string variable giving the main exposure of interest</p></td>
+    </tr>
+    <tr>
+      <th>covariates</th>
+      <td><p>A vector of strings giving the covariates to assess for multicollinearity as a</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A dataframe</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function assess multicollinearity in a regression model using the
+strategy described in Greenland, Daniel and Pearce, 2016.
+It translates a procedure written in Excel by my friend Adrian Root.</p>
+<p>The function will take a regression model and a vector of covariates, and drop them
+one-by-one.
+The relative change in root mean square error (`rel_rmse`) is returned in a
+dataframe, along with the regression co-efficients for the 'main' exposure of
+interest.</p>
+<p>A value of less than one indicates that the root mean square error is larger
+in the reduced model than the full model, indicating that confounding by the
+dropped covariate is greater than multicollinearity.
+Conversely, a value less than one indicates the possibility of
+multicollinearity.</p>
+<p>Since the function repeatedly re-fits a regression model, as many times as
+there are covariates there are to test, it is likely that the function will
+take a long time to run when large datasets are being used.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>clear_dataframes</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "dat"</div></pre>
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
+
+<span class='va'>mt_m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='co'># fit regression model with all covariates</span>
+<span class='va'>mt_vars</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='co'># create vector of covariates to examine for collinearity</span>
+<span class='va'>mt_vars</span> <span class='op'>&lt;-</span> <span class='va'>mt_vars</span><span class='op'>[</span><span class='op'>!</span><span class='va'>mt_vars</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mpg"</span>, <span class='st'>"wt"</span><span class='op'>)</span><span class='op'>]</span> <span class='co'># drop the outcome and main effect</span>
+
+<span class='fu'>np_multicol</span><span class='op'>(</span>model <span class='op'>=</span> <span class='va'>mt_m</span>, main_effect <span class='op'>=</span> <span class='st'>"wt"</span>, covariates <span class='op'>=</span> <span class='va'>mt_vars</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in np_multicol(model = mt_m, main_effect = "wt", covariates = mt_vars): could not find function "np_multicol"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

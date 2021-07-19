@@ -14,10 +14,15 @@ BugReports: https://github.com/simonthelwall/nicethings/issues
 URL: https://github.com/simonthelwall/nicethings, https://simonthelwall.github.io/nicethings/
 Encoding: UTF-8
 LazyData: true
-Imports: stringr, rmarkdown, knitr,
+Imports: 
+    stringr,
+    rmarkdown,
+    knitr,
     assertthat,
-    dplyr
-RoxygenNote: 6.1.1
+    dplyr,
+    glue,
+    purrr
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Suggests: 
     broom,
