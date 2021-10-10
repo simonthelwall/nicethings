@@ -66,6 +66,7 @@ model_reduction_function <- function(model, main_effect, single_covariate){
   z <- data.frame("main_effect" = main_effect, "dropped_var" = single_covariate,
                   "beta_full" = beta_ful, "beta_reduced" = beta_red,
                   "std_err_full" = se_ful, "std_err_red" = se_red,
+                  "rmse_ful" = rmse_ful, "rmse_red" = rmse_red,
                   "rel_rmse" = rel_rmse, row.names = NULL,
                   stringsAsFactors = FALSE)
   return(z)

@@ -66,6 +66,6 @@ np_multicol(model = mt_m, main_effect = "wt", covariates = mt_vars)
 ```
 
 Here, we can see that the variable `carb` has a `rel_rmse` that is substantially smaller than 1 and it should be considered whether this variable is suitable for inclusion in the final regression model. 
-Other varaibles, except perhaps `disp`, have values for `rel_rmse` that are close to, or above, 1 and so should not be excluded from the final regression model. 
+Other variables, except perhaps `disp`, have values for `rel_rmse` that are close to, or above, 1 and so should not be excluded from the final regression model. 
 
 [^1]: Greenland, S., Daniel, R., & Pearce, N. (2016). Outcome modelling strategies in epidemiology: traditional methods and basic alternatives. International journal of epidemiology, 45(2), 565-575.
