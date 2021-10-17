@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -68,7 +68,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/simonthelwall/nicethings/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -82,13 +82,13 @@
 
       
 
-      </header><script src="nicethings_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="nicethings_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>nicethings</h1>
                         <h4 class="author">Simon Thelwall</h4>
             
-            <h4 class="date">23 January 2021</h4>
+            <h4 class="date">17 October 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/simonthelwall/nicethings/blob/master/vignettes/nicethings.Rmd"><code>vignettes/nicethings.Rmd</code></a></small>
       <div class="hidden name"><code>nicethings.Rmd</code></div>
@@ -113,7 +113,7 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span>
 <span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">wt</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span>
-<span class="va">m1_tidy</span> <span class="op">&lt;-</span> <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span><span class="op">(</span><span class="va">m1</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">m1_tidy</span> <span class="op">&lt;-</span> <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">m1</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">m1_tidy</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 7
 ##   term        estimate std.error statistic  p.value conf.low conf.high
