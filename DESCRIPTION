@@ -21,8 +21,9 @@ Imports:
     assertthat,
     dplyr,
     glue,
-    purrr
-RoxygenNote: 7.1.1
+    purrr,
+    magrittr
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Suggests: 
     broom,
