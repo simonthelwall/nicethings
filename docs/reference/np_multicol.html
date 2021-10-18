@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +109,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/simonthelwall/nicethings/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -185,7 +185,26 @@ take a long time to run when large datasets are being used.</p>
 <span class='va'>mt_vars</span> <span class='op'>&lt;-</span> <span class='va'>mt_vars</span><span class='op'>[</span><span class='op'>!</span><span class='va'>mt_vars</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mpg"</span>, <span class='st'>"wt"</span><span class='op'>)</span><span class='op'>]</span> <span class='co'># drop the outcome and main effect</span>
 
 <span class='fu'>np_multicol</span><span class='op'>(</span>model <span class='op'>=</span> <span class='va'>mt_m</span>, main_effect <span class='op'>=</span> <span class='st'>"wt"</span>, covariates <span class='op'>=</span> <span class='va'>mt_vars</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in np_multicol(model = mt_m, main_effect = "wt", covariates = mt_vars): could not find function "np_multicol"</span></div></pre>
+</div><div class='output co'>#&gt;   main_effect dropped_var beta_full beta_reduced std_err_full std_err_red
+#&gt; 1          wt         cyl -3.715304    -3.692508     1.894414    1.839535
+#&gt; 2          wt        disp -3.715304    -2.626943     1.894414    1.198000
+#&gt; 3          wt          hp -3.715304    -3.265846     1.894414    1.837757
+#&gt; 4          wt        drat -3.715304    -3.868862     1.894414    1.834457
+#&gt; 5          wt        qsec -3.715304    -2.636203     1.894414    1.642528
+#&gt; 6          wt          vs -3.715304    -3.739556     1.894414    1.845195
+#&gt; 7          wt          am -3.715304    -3.934304     1.894414    1.907345
+#&gt; 8          wt        gear -3.715304    -3.866091     1.894414    1.828500
+#&gt; 9          wt        carb -3.715304    -4.032142     1.894414    1.332517
+#&gt;    rel_rmse
+#&gt; 1 0.9711058
+#&gt; 2 0.8543849
+#&gt; 3 0.9986836
+#&gt; 4 0.9717370
+#&gt; 5 1.0374117
+#&gt; 6 0.9741028
+#&gt; 7 1.0134407
+#&gt; 8 0.9684823
+#&gt; 9 0.7230029</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

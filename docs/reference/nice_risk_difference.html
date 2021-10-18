@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • nicethings</title>
+<title>nice_risk_difference — nice_risk_difference • nicethings</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="nice_risk_difference — nice_risk_difference" />
+<meta property="og:description" content="calculates a risk difference and confidence interval with a 95" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -125,20 +126,59 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>nice_risk_difference</h1>
+    <small class="dont-index">Source: <a href='https://github.com/simonthelwall/nicethings/blob/master/R/nice_risk_difference.R'><code>R/nice_risk_difference.R</code></a></small>
+    <div class="hidden name"><code>nice_risk_difference.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <dl>
-        <dt><a href="detecting-multicollinearity.html">Detecting multi-collinearity in regression models</a></dt>
-        <dd></dt>
-        <dt><a href="nicethings.html">nicethings</a></dt>
-        <dd></dt>
-      </dl>
+    <div class="ref-description">
+    <p>calculates a risk difference and confidence interval with a 95<!-- % confidence interval --></p>
     </div>
+
+    <pre class="usage"><span class='fu'>nice_risk_difference</span><span class='op'>(</span><span class='va'>n1</span>, <span class='va'>d1</span>, <span class='va'>n2</span>, <span class='va'>d2</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>n1</th>
+      <td><p>Numerator 1</p></td>
+    </tr>
+    <tr>
+      <th>d1</th>
+      <td><p>Denominator 1</p></td>
+    </tr>
+    <tr>
+      <th>n2</th>
+      <td><p>Numerator 2</p></td>
+    </tr>
+    <tr>
+      <th>d2</th>
+      <td><p>Denominator 2</p></td>
+    </tr>
+    </table>
+
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># table 16.2 Kirkwood and Sterne</span>
+<span class='fu'>nice_risk_difference</span><span class='op'>(</span>n1 <span class='op'>=</span> <span class='fl'>20</span>, d1 <span class='op'>=</span> <span class='fl'>240</span>, n2 <span class='op'>=</span> <span class='fl'>80</span>, d2 <span class='op'>=</span> <span class='fl'>220</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $rd
+#&gt; [1] -0.280303
+#&gt; 
+#&gt; $se_rd
+#&gt; [1] 0.03701524
+#&gt; 
+#&gt; $lci
+#&gt; [1] -0.3528529
+#&gt; 
+#&gt; $uci
+#&gt; [1] -0.2077532
+#&gt; </div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 

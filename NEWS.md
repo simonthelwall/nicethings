@@ -3,6 +3,7 @@
 ## Changes
 
  * Added function and vignette for detecting multicollinearity in regression models. 
+ * Added function for calculating risk difference and 95% confidence interval for a risk difference. 
 
 # version 0.0.0.9002
 

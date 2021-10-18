@@ -39,7 +39,8 @@ nice_names <- function(x){
 
 pipe_nice_names <- function(x){
   assertthat::assert_that(is.data.frame(x))
-  x <- dplyr::rename_all(x, dplyr::funs(pipeable_nice_names))
+  x <- x %>% dplyr::rename_with(.cols = dplyr::everything(),
+                           .fn = pipeable_nice_names)
   return(x)
 }
 
