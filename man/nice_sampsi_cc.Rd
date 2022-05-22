@@ -11,11 +11,12 @@ nice_sampsi_cc(pi_0, or, power, alpha, ratio = 1)
 
 \item{or}{Minimum odds ratio to be detected}
 
-\item{power}{The power required (0-100%)}
+\item{power}{The power required (0-100\%)}
 
-\item{alpha}{The alpha to be detected (0-100%)}
+\item{alpha}{The alpha to be detected (0-100\%)}
 
-\item{ratio}{Ratio of controls to cases}
+\item{ratio}{Ratio of controls to cases
+pkgdown}
 }
 \description{
 Returns the total number of observations required in a case control study.

@@ -8,11 +8,12 @@
 #' The error is in the last line of step 3, where the print states 2.2769/0.17^2 = 179.4
 #' The correction is 2.2769^2/0.17^2 = 179.4
 #'
-#' @param pi_0 Proportion of controls exposed
+#' @param pi_0 Proportion of controls exposed (0-1)
 #' @param or Minimum odds ratio to be detected
-#' @param power The power required (0-100%)
-#' @param alpha The alpha to be detected (0-100%)
+#' @param power The power required (0-100\%)
+#' @param alpha The alpha to be detected (0-100\%)
 #' @param ratio Ratio of controls to cases
+#'
 #' @export
 #' @examples
 #' # Example 35.4, page 419 and 422 of Kirkwood and Sterne, 2nd Ed
