@@ -16,7 +16,11 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(nicethings)
+data(solid)
 ```
+
+*np_multicol should be considered experimental.* 
+Really I should shift it to a development branch until I'm happy with it. 
 
 I learned regression modelling at LSHTM, and Neil Pearce taught us modelling strategies there. 
 The lectures he gave became a paper with Sander Greenland and Rhian Daniel.[^1] 
@@ -46,23 +50,39 @@ It furthers the analysis by looping through a set of covariates and returning a 
 
 First, we load some data, set up a model and a vector of variables to test for multi-collinearity. 
 
-```{r, echo=TRUE}
-data(mtcars)
+The data are a series of anthropometric measurements based on apparently healthy Indians. 
+This data set is shared under a CC-BY statement, with credit to Mohit Aggarwal and Anurag Agrawal. 
 
+To demonstrate the problem, we're going to analyse the relationship between systolic blood pressure and two other variables: waist circumference and weight in kilograms. 
+
+```{r, echo=TRUE}
+m1 <- lm(systolic_pressure ~ weight_kg, data = solid)
+m2 <- lm(systolic_pressure ~ waist_circumference_cm, data = solid)
+m3 <- lm(systolic_pressure ~ weight_kg + waist_circumference_cm, data = solid)
+
+problem <- data.frame(term = c("Weight", "Waist", "Both (Weight)", "Both (Waist)"), 
+                      coefficient = c(coef(m1)[2], coef(m2)[2], coef(m3)[2],coef(m3)[3]), 
+                      std_error = c(coef(summary(m1))[2,2], coef(summary(m2))[2,2], 
+                                    coef(summary(m3))[2,2], coef(summary(m3))[3,2])
+                      )
+problem
+```
+
+So, when we regress on both waist circumference and weight, the coefficient for waist falls by about half and the standard error nearly doubles. 
+The increase in the standard error means that we risk assuming that a factor is not significantly associated with the outcome (systolic blood pressure).
+
+```{r, echo=TRUE}
 # fit all the variables 
-mt_m <- lm(mpg ~ ., data = mtcars) 
+mt_m <- lm(systolic_pressure ~ sex + age_years + height_cm + weight_kg + bmi + waist_circumference_cm + waist_height_ratio, data = solid) 
 
 # create a vector of variables to assess for multi-collinearity
-mt_vars <- names(mtcars) 
-
-# exclude the outcome and the main exposure of interest, in this case, wt
-mt_vars <- mt_vars[!mt_vars %in% c("mpg", "wt")] 
+mt_vars <- c("sex", "weight_kg", "waist_circumference_cm", "waist_height_ratio") 
 ```
 
 Now, we can step through each of the variables and assess the effect it has on the relative root mean square error. 
 
 ```{r, echo=TRUE}
-np_multicol(model = mt_m, main_effect = "wt", covariates = mt_vars)
+np_multicol(model = mt_m, main_effect = "age_years", covariates = mt_vars)
 ```
 
 Here, we can see that the variable `carb` has a `rel_rmse` that is substantially smaller than 1 and it should be considered whether this variable is suitable for inclusion in the final regression model. 

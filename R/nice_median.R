@@ -8,6 +8,7 @@
 #' @examples
 #' data(mtcars)
 #' nice_median(mtcars$cyl)
+#' @export
 
 nice_median <- function(x, digits = 1){
   med <- format(round(median(x, na.rm = TRUE), digits = digits), big.mark = ",")

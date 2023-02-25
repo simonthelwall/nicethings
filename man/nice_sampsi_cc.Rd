@@ -7,7 +7,7 @@
 nice_sampsi_cc(pi_0, or, power, alpha, ratio = 1)
 }
 \arguments{
-\item{pi_0}{Proportion of controls exposed}
+\item{pi_0}{Proportion of controls exposed (0-1)}
 
 \item{or}{Minimum odds ratio to be detected}
 
@@ -15,8 +15,7 @@ nice_sampsi_cc(pi_0, or, power, alpha, ratio = 1)
 
 \item{alpha}{The alpha to be detected (0-100\%)}
 
-\item{ratio}{Ratio of controls to cases
-pkgdown}
+\item{ratio}{Ratio of controls to cases}
 }
 \description{
 Returns the total number of observations required in a case control study.

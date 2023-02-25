@@ -7,7 +7,7 @@
 clear_vectors()
 }
 \description{
-For those times when you want to clear up your global environment and get rid
+For those occasions when you want to clear up your global environment and get rid
 of all the vectors.
 }
 \examples{

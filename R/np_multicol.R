@@ -41,6 +41,7 @@
 #' np_multicol(model = mt_m, main_effect = "wt", covariates = mt_vars)
 
 np_multicol <- function(model, main_effect, covariates){
+  warning("np_multicol should be considered experimental")
   assertthat::assert_that(is.character(main_effect),
                           msg = "main_effect must be a character string")
   # assertthat::assert_that(is.list(covariates),

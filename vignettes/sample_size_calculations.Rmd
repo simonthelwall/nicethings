@@ -1,0 +1,42 @@
+---
+title: "Calculating sample sizes for case control studies"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Calculating sample sizes for case control studies}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(nicethings)
+```
+
+
+```{r}
+library(purrr)
+library(nicethings)
+library(dplyr)
+library(glue)
+
+dat <- data.frame(prevalence = c(0.005, 0.01, 0.05, seq(0.1, 0.9, 0.05)))
+dat
+
+ors <- seq(1.25, 5, 0.25)
+ors
+
+dat <- ors %>%
+  map( ~ dat %>%
+         select(1) %>%
+         nice_sampsi_cc(pi_0 = ., or = .x, power = 90, alpha = 5) %>%
+         set_names(glue("OR >= {.x}"))
+  ) %>%
+  bind_cols(dat, .)
+dat
+```

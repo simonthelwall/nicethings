@@ -1,10 +1,11 @@
 #' removes data frames from global environment
 #'
-#' For those occaisions when you want to clear all your data frames out of memory without also removing any functions you may have loaded in.
+#' For those occasions when you want to clear all your data frames out of memory without also removing any functions you may have loaded in.
 #' Adapted from \url{http://stackoverflow.com/questions/19684819/get-list-of-available-data-frames}
 #'
 #' @examples
 #' dat <- as.data.frame(x = rnorm(3), y = rnorm(3))
+#' ls()
 #' clear_dataframes()
 #' ls()
 #' @export
@@ -16,7 +17,7 @@ clear_dataframes <- function(){
 
 #' removes vectors from global environment
 #'
-#' For those times when you want to clear up your global environment and get rid
+#' For those occasions when you want to clear up your global environment and get rid
 #' of all the vectors.
 #'
 #' @examples
