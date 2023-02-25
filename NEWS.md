@@ -1,4 +1,8 @@
-# version 0.0.0.9002
+# version 0.0.0.9003
+
+## Changes
+ * Added function for calculating risk ratios and 95% CI
+ * Shifted `np_multicol` to a development branch
 
 ## Changes
 

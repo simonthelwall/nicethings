@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nicethings</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/nicethings.html">Get started</a>
 </li>
@@ -50,14 +46,14 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/detecting-multicollinearity.html">Detecting multi-collinearity in regression models</a>
+      <a href="../articles/sample_size_calculations.html">Calculating sample sizes for case control studies</a>
     </li>
   </ul>
 </li>
@@ -67,7 +63,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/simonthelwall/nicethings/">
+  <a href="https://github.com/simonthelwall/nicethings/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,65 +78,85 @@
 
       
 
-      </header><script src="nicethings_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>nicethings</h1>
-                        <h4 class="author">Simon Thelwall</h4>
+                        <h4 data-toc-skip class="author">Simon
+Thelwall</h4>
             
-            <h4 class="date">22 May 2022</h4>
+            <h4 data-toc-skip class="date">25 February 2023</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/simonthelwall/nicethings/blob/master/vignettes/nicethings.Rmd"><code>vignettes/nicethings.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/simonthelwall/nicethings/blob/HEAD/vignettes/nicethings.Rmd" class="external-link"><code>vignettes/nicethings.Rmd</code></a></small>
       <div class="hidden name"><code>nicethings.Rmd</code></div>
 
     </div>
 
     
     
-<div id="nicethings" class="section level1">
-<h1 class="hasAnchor">
-<a href="#nicethings" class="anchor"></a>nicethings</h1>
-<p>This package draws together a bunch of functions I’ve written to facilitate nicely formatting values calculated in R for use in Rmarkdown reports.</p>
-<p>Using values calculated in R for printing can be long-winded. Often to get values into a format that is nice to read involves multiple nested functions. This makes inline code difficult to write and difficult to read. <code>nicethings</code> aims to solve this by providing simple wrappers for common tasks.</p>
-<div id="regression-output" class="section level2">
-<h2 class="hasAnchor">
-<a href="#regression-output" class="anchor"></a>Regression output</h2>
-<div id="the-problem" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-problem" class="anchor"></a>The problem</h3>
-<p>Consider a regression model, from which we want to print the output into a paragraph.</p>
+<div class="section level2">
+<h2 id="nicethings">nicethings<a class="anchor" aria-label="anchor" href="#nicethings"></a>
+</h2>
+<p>This package draws together a bunch of functions I’ve written to
+facilitate nicely formatting values calculated in R for use in Rmarkdown
+reports.</p>
+<p>Using values calculated in R for printing can be long-winded. Often
+to get values into a format that is nice to read involves multiple
+nested functions. This makes inline code difficult to write and
+difficult to read. <code>nicethings</code> aims to solve this by
+providing simple wrappers for common tasks.</p>
+<div class="section level3">
+<h3 id="regression-output">Regression output<a class="anchor" aria-label="anchor" href="#regression-output"></a>
+</h3>
+<div class="section level4">
+<h4 id="the-problem">The problem<a class="anchor" aria-label="anchor" href="#the-problem"></a>
+</h4>
+<p>Consider a regression model, from which we want to print the output
+into a paragraph.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span>
-<span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">wt</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span>
-<span class="va">m1_tidy</span> <span class="op">&lt;-</span> <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">m1</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">m1_tidy</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 7
-##   term        estimate std.error statistic  p.value conf.low conf.high
-##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-## 1 (Intercept)    39.7      1.71      23.1  3.04e-20    36.2     43.2  
-## 2 cyl            -1.51     0.415     -3.64 1.06e- 3    -2.36    -0.660
-## 3 wt             -3.19     0.757     -4.22 2.22e- 4    -4.74    -1.64</code></pre>
-<p>Say we want to print the estimate for the effect of weight on the mpg, with the 95% confidence intervals. To do this using base R the code might look something like this:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning: package 'broom' was built under R version 4.1.3</span></span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span>
+<span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">wt</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">m1_tidy</span> <span class="op">&lt;-</span> <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">m1</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">m1_tidy</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 3 x 7</span></span></span>
+<span><span class="co">##   term        estimate std.error statistic  p.value conf.low conf.high</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> (Intercept)    39.7      1.71      23.1  3.04<span style="color: #949494;">e</span><span style="color: #BB0000;">-20</span>    36.2     43.2  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> cyl            -<span style="color: #BB0000;">1.51</span>     0.415     -<span style="color: #BB0000;">3.64</span> 1.06<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>    -<span style="color: #BB0000;">2.36</span>    -<span style="color: #BB0000;">0.660</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> wt             -<span style="color: #BB0000;">3.19</span>     0.757     -<span style="color: #BB0000;">4.22</span> 2.22<span style="color: #949494;">e</span><span style="color: #BB0000;">- 4</span>    -<span style="color: #BB0000;">4.74</span>    -<span style="color: #BB0000;">1.64</span></span></span></code></pre>
+<p>Say we want to print the estimate for the effect of weight on the
+mpg, with the 95% confidence intervals. To do this using base R the code
+might look something like this:</p>
 <blockquote>
-<p>Vehicle weight was significantly associated with decreased fuel efficiency <code>`r paste0(round(m1_tidy[3,2], 1), " (95% CI:", round(m1_tidy[3,6], 1), "-", round(m1_tidy[3,7], 1), ")")`</code></p>
+<p>Vehicle weight was significantly associated with decreased fuel
+efficiency
+<code>`r paste0(round(m1_tidy[3,2], 1), " (95% CI:", round(m1_tidy[3,6], 1), "-", round(m1_tidy[3,7], 1), ")")`</code></p>
 </blockquote>
 <p>which would render as:</p>
 <blockquote>
-<p>Vehicle weight was significantly associated with decreased fuel efficiency -3.2 (95% CI:-4.7–1.6).</p>
+<p>Vehicle weight was significantly associated with decreased fuel
+efficiency -3.2 (95% CI:-4.7–1.6).</p>
 </blockquote>
-<p>This is true of various things in R: percentages, p-values, for example.</p>
+<p>This is true of various things in R: percentages, p-values, for
+example.</p>
 </div>
-<div id="a-solution" class="section level3">
-<h3 class="hasAnchor">
-<a href="#a-solution" class="anchor"></a>A solution</h3>
-<p>A nicer approach is to wrap these up into a function and do something like:</p>
+<div class="section level4">
+<h4 id="a-solution">A solution<a class="anchor" aria-label="anchor" href="#a-solution"></a>
+</h4>
+<p>A nicer approach is to wrap these up into a function and do something
+like:</p>
 <blockquote>
-<p>Vehicle weight was significantly associated with decreased fuel efficiency <code>`r nice_estimate(m1_tidy[3,2], m1_tidy[3,6], m1_tidy[3,7])`</code></p>
+<p>Vehicle weight was significantly associated with decreased fuel
+efficiency
+<code>`r nice_estimate(m1_tidy[3,2], m1_tidy[3,6], m1_tidy[3,7])`</code></p>
 </blockquote>
 <p>which would render as:</p>
 <blockquote>
-<p>Vehicle weight was significantly associated with decreased fuel efficiency -3.2 (95% CI:-4.7–1.6)</p>
+<p>Vehicle weight was significantly associated with decreased fuel
+efficiency -3.2 (95% CI:-4.7–1.6)</p>
 </blockquote>
 </div>
 </div>
@@ -158,11 +174,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Simon Thelwall.</p>
+  <p></p>
+<p>Developed by Simon Thelwall.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -170,6 +188,8 @@
 
   
 
+
+  
 
   </body>
 </html>

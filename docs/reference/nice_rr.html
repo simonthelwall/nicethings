@@ -35,10 +35,7 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/detecting-multicollinearity.html">Detecting multi-collinearity in regression models</a>
-    </li>
-    <li>
-      <a href="../articles/sample_size_calculations.html">UNKNOWN TITLE</a>
+      <a href="../articles/sample_size_calculations.html">Calculating sample sizes for case control studies</a>
     </li>
   </ul></li>
 <li>
@@ -94,17 +91,19 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">smokers</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set 'smokers' not found</span>
 <span class="r-in"><span><span class="va">lc_agg</span> <span class="op">&lt;-</span> <span class="va">smokers</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>denominator <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>, numerator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">lung_cancer</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">smoker</span>, values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">denominator</span>, <span class="va">numerator</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in dplyr::group_by(., smoker):</span> object 'smokers' not found</span>
 <span class="r-in"><span><span class="va">lc_agg</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'lc_agg' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   denominator_0 denominator_1 numerator_0 numerator_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         <span style="text-decoration: underline;">60</span>000         <span style="text-decoration: underline;">30</span>000           6          39</span>
 <span class="r-in"><span><span class="fu">nice_rr</span><span class="op">(</span>n1 <span class="op">=</span> <span class="va">lc_agg</span><span class="op">$</span><span class="va">numerator_0</span>, d1 <span class="op">=</span> <span class="va">lc_agg</span><span class="op">$</span><span class="va">denominator_0</span>,</span></span>
 <span class="r-in"><span>    n2 <span class="op">=</span> <span class="va">lc_agg</span><span class="op">$</span><span class="va">numerator_1</span>, d2 <span class="op">=</span> <span class="va">lc_agg</span><span class="op">$</span><span class="va">denominator_1</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nice_rr(n1 = lc_agg$numerator_0, d1 = lc_agg$denominator_0, n2 = lc_agg$numerator_1,     d2 = lc_agg$denominator_1):</span> could not find function "nice_rr"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   rr se_log_rr      lci      uci</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 13  0.438472 5.504381 30.70282</span>
 </code></pre></div>
     </div>
   </div>
@@ -119,7 +118,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
