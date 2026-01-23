@@ -131,6 +131,7 @@ nice_year <- function(x, year_format){
 #' x <- lubridate::dmy("01-01-2026")
 #' lubridate::epiweek(x)
 #' first_day_of_week(x)
+#' @export
 
 first_day_of_week <- function(dt){
   wk <- lubridate::isoweek(dt)

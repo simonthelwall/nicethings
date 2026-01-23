@@ -33,6 +33,7 @@ nice_risk_difference <- function(n1, d1, n2, d2){
 #' kas_16_2 <- data.frame(num = c(20, 80), denom = c(240, 220))
 #' kas_16_2 <- nice_risk_difference_d(kas_16_2, numerator = num, denominator = denom)
 #' kas_16_2
+#' @export
 
 nice_risk_difference_d <- function(dfrm, numerator, denominator){
   n1 <- dfrm %>% dplyr::filter(dplyr::row_number() == 1) %>% dplyr::pull({{ numerator }})
@@ -50,11 +51,3 @@ nice_risk_difference_d <- function(dfrm, numerator, denominator){
     dplyr::select(-p2)
   return(dfrm)
 }
-
-var_summary <- function(data, var) {
-  data %>%
-    dplyr::summarise(n = dplyr::n(), min = min({{ var }}), max = max({{ var }}))
-}
-mtcars %>%
-  dplyr::group_by(cyl) %>%
-  var_summary(mpg)
