@@ -23,7 +23,8 @@ Imports:
     glue,
     purrr,
     magrittr,
-    stats
+    stats,
+    lubridate
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Suggests: 

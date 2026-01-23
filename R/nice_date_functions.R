@@ -37,21 +37,6 @@ nice_month_string <- function(x, abbreviated_out = FALSE, year_type = "calendar"
                        NA)
    }
 
-    # month_levels <- ifelse(abbreviated_out == TRUE & year_type == "calendar",
-    #                      c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
-    #                        "Aug", "Sep", "Oct", "Nov", "Dec", NA),
-    #                      ifelse(abbreviated_out == FALSE & year_type == "calendar",
-    #                             c("January", "February", "March", "April", "May",
-    #                               "June", "July", "August", "September",
-    #                               "October", "November", "December", NA),
-    #                             ifelse(abbreviated_out == TRUE & year_type == "financial",
-    #                                    c("Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", NA),
-    #                                    ifelse(abbreviated_out == FALSE & year_type == "financial",
-    #                                           c("January", "February", "March", "April", "May",
-    #                                           "June", "July", "August", "September",
-    #                                           "October", "November", "December",
-    #                                           NA)))))
-
   if(abbreviated_in == TRUE & abbreviated_out == FALSE){
     x <- dplyr::case_when(
       x == "Jan" ~ "January",
@@ -69,25 +54,6 @@ nice_month_string <- function(x, abbreviated_out = FALSE, year_type = "calendar"
       TRUE ~ NA_character_
     )
   }
-  # x <- ifelse(abbreviated_in == TRUE & abbreviated_out == FALSE,
-  #             dplyr::case_when(
-  #               x == "Jan" ~ "January",
-  #               x == "Feb" ~ "February",
-  #               x == "Mar" ~ "March",
-  #               x == "Apr" ~ "April",
-  #               x == "May" ~ "May",
-  #               x == "Jun" ~ "June",
-  #               x == "Jul" ~ "July",
-  #               x == "Aug" ~ "August",
-  #               x == "Sep" ~ "September",
-  #               x == "Oct" ~ "October",
-  #               x == "Nov" ~ "November",
-  #               x == "Dec" ~ "December",
-  #               TRUE ~ NA_character_
-  #             ), x)
-
-  # x <- ifelse(abbreviated_in == FALSE & abbreviated_out == TRUE,
-  #             substr(x,1,3), x)
   if(abbreviated_in == FALSE & abbreviated_out == TRUE){
     x <- substr(x,1,3)
   }
@@ -144,4 +110,31 @@ nice_year <- function(x, year_format){
               )
   )
   return(z)
+}
+
+#' first_day_of_week
+#'
+#' Returns the first day of the epi-week in a date format to allow nice plotting
+#' of weekly data on a ggplot graph.
+#'
+#' @param dt a date
+#' @return A date giving the date of the Monday of the week of the corresponding epi-week
+#'
+#' @examples
+#'
+#'
+#' x <- lubridate::dmy("22-01-2026") # A Thursday
+#' first_day_of_week(x) # returns the Monday of that week
+#'
+#' # Year transitions can be tricky. Here, the first of January 2026 is week 53 of
+#' #  2025 and was a Thursday. So Monday of week 53 of 2025 is 29 December 2025
+#' x <- lubridate::dmy("01-01-2026")
+#' lubridate::epiweek(x)
+#' first_day_of_week(x)
+
+first_day_of_week <- function(dt){
+  wk <- lubridate::isoweek(dt)
+  yr <- lubridate::isoyear(dt)
+  st_wk <- as.Date(glue::glue("1-{wk}-{yr}"), format = "%u-%U-%Y") # weekday numbers don't take a leading zero
+  return(st_wk)
 }

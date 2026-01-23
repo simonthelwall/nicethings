@@ -1,5 +1,11 @@
 # version 0.0.0.9003
 
+## Changes 
+ * Added function `day_of_year` to get week of year as a date for nice plotting in ggplot2
+ * Added function `nice_risk_difference_d` to calculate a risk difference on a dataframe in a dplyr like way
+
+# version 0.0.0.9003
+
 ## Changes
  * Added function for calculating risk ratios and 95% CI
  * Shifted `np_multicol` to a development branch
